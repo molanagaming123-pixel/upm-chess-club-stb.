@@ -1,0 +1,31 @@
+# Rahasia
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Database lokal
+*.db
+*.sqlite3
+
+# Node / Expo
+node_modules/
+.expo/
+dist/
+web-build/
+*.apk
+*.aab
+android/
+ios/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+npm.log

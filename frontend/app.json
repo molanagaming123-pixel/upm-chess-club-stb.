@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "UPM Chess Club",
+    "slug": "upm-chess-club",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0A1628",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0A1628"
+    },
+    "plugins": ["expo-secure-store"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "id.ac.satyaterra.upmchess"
+    },
+    "android": {
+      "package": "id.ac.satyaterra.upmchess",
+      "adaptiveIcon": {
+        "backgroundColor": "#0A1628",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "usesCleartextTraffic": true
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
