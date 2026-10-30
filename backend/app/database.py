@@ -12,6 +12,8 @@ _is_sqlite = settings.database_url.startswith("sqlite")
 engine = create_engine(
     settings.database_url,
     connect_args={"check_same_thread": False} if _is_sqlite else {},
+    # Postgres di serverless (Vercel + Neon): koneksi bisa diputus saat idle, jadi uji dulu sebelum dipakai.
+    **({} if _is_sqlite else {"pool_pre_ping": True, "pool_recycle": 300, "pool_size": 2, "max_overflow": 3}),
 )
 
 if _is_sqlite:

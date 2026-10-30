@@ -10,11 +10,20 @@ load_dotenv(BASE_DIR / ".env")
 MIN_SECRET_LENGTH = 32
 
 
+def _normalize_db_url(url: str) -> str:
+    """Neon/Heroku memberi `postgres://` atau `postgresql://`; SQLAlchemy butuh nama driver (psycopg v3)."""
+    url = url.strip()
+    for prefix in ("postgres://", "postgresql://"):
+        if url.startswith(prefix):
+            return "postgresql+psycopg://" + url[len(prefix):]
+    return url
+
+
 class Settings:
     def __init__(self) -> None:
         self.secret_key: str = os.getenv("SECRET_KEY", "")
-        self.database_url: str = os.getenv(
-            "DATABASE_URL", f"sqlite:///{BASE_DIR / 'upm_chess.db'}"
+        self.database_url: str = _normalize_db_url(
+            os.getenv("DATABASE_URL", f"sqlite:///{BASE_DIR / 'upm_chess.db'}")
         )
         self.access_token_expire_minutes: int = int(
             os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "480")

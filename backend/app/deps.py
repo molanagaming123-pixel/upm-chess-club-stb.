@@ -16,7 +16,7 @@ def get_current_user(
 ) -> User:
     unauthorized = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Sesi tidak valid atau sudah berakhir. Silakan login kembali.",
+        detail="Sesi tidak valid atau sudah berakhir. Silakan masuk kembali.",
         headers={"WWW-Authenticate": "Bearer"},
     )
     if creds is None:

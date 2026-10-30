@@ -4,7 +4,8 @@ from datetime import date, timedelta
 
 # Environment HARUS diatur sebelum `app` di-import.
 _TMP = tempfile.mkdtemp(prefix="upm_chess_test_")
-os.environ["DATABASE_URL"] = f"sqlite:///{_TMP}/test.db"
+# Default SQLite sementara; set TEST_DATABASE_URL untuk menguji terhadap PostgreSQL.
+os.environ["DATABASE_URL"] = os.environ.get("TEST_DATABASE_URL") or f"sqlite:///{_TMP}/test.db"
 os.environ["SECRET_KEY"] = "kunci-rahasia-khusus-pengujian-" + "x" * 32
 os.environ["ADMIN_EMAIL"] = "admin@example.com"
 os.environ["ADMIN_PASSWORD"] = "AdminPass123"
